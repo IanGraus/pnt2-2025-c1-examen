@@ -7,11 +7,11 @@ export default function Home() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
-
+  
   useEffect(() => {
     async function fetchMovies() {
       try {
-        const response = await fetch(`https://mflixbackend.azurewebsites.net/api/movies?pageSize=10&page=${page}`);
+        const response = await fetch(`https://mflixbackend.azurewebsites.net/api/movies?pageSize=20&page=${page}`);
         const data = await response.json();
         setMovies(data);
         setLoading(false);
@@ -20,9 +20,11 @@ export default function Home() {
         setLoading(false);
       }
     }
+    
 
     fetchMovies();
   }, [page]);
+  
 
   return (
     <main className="container mx-auto p-4">      
